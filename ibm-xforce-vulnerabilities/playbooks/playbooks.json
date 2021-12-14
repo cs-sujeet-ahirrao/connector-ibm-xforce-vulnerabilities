@@ -1,0 +1,606 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - IBM X-Force Vulnerabilities - 1.0.0",
+      "description": "Sample playbooks for \"IBM X-Force Vulnerabilities\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": "/api/3/images/dbd24d8b-d470-4736-82c8-4ec52839b07e",
+      "uuid": "9c70aa5d-fd27-4bac-a441-e86bc89ff1aa",
+      "id": 156,
+      "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+      "createDate": 1639495735,
+      "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+      "modifyDate": 1639495735,
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Recent Vulnerabilities",
+          "aliasName": null,
+          "tag": "#IBM X-Force Vulnerabilities",
+          "description": "Returns recent vulnerabilities.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1639495857,
+          "collection": "/api/3/workflow_collections/9c70aa5d-fd27-4bac-a441-e86bc89ff1aa",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/7fa85778-b8d1-455a-acd4-cd675caabfca",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Recent Vulnerabilities",
+              "description": null,
+              "arguments": {
+                "name": "IBM X-Force Vulnerabilities",
+                "config": "d63eb01a-8f8d-4a3c-91cd-e1ef87236a10",
+                "params": {
+                  "skip": "",
+                  "limit": "",
+                  "endDate": "",
+                  "startDate": "",
+                  "descending": true
+                },
+                "version": "1.0.0",
+                "connector": "ibm-xforce-vulnerabilities",
+                "operation": "get_recent_vulnerabilities",
+                "operationTitle": "Get Recent Vulnerabilities",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "59d77c0e-17ea-4f48-a112-aefe36fbb4fb",
+              "id": 7393
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "0e209c81-6b2d-40fa-a4fd-b596e39c735b",
+                "title": "IBM X-Force Vulnerabilities: Get Recent Vulnerabilities",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "7fa85778-b8d1-455a-acd4-cd675caabfca",
+              "id": 7392
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Recent Vulnerabilities",
+              "targetStep": "/api/3/workflow_steps/59d77c0e-17ea-4f48-a112-aefe36fbb4fb",
+              "sourceStep": "/api/3/workflow_steps/7fa85778-b8d1-455a-acd4-cd675caabfca",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "255a4533-88bf-4c15-bbef-19d87613b187"
+            }
+          ],
+          "priority": null,
+          "uuid": "06faa7a3-e7f1-4736-a84a-7f65923ed631",
+          "recordTags": [
+            "IBM X-Force",
+            "Vulnerabilities"
+          ],
+          "id": 1550,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1639495735,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1639497050,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Vulnerabilities by Microsoft Security Bulletin ID",
+          "aliasName": null,
+          "tag": "#IBM X-Force Vulnerabilities",
+          "description": "Returns the vulnerability associated with the entered stdcode",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1639496005,
+          "collection": "/api/3/workflow_collections/9c70aa5d-fd27-4bac-a441-e86bc89ff1aa",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/ca84b06e-a7bc-4c72-8faa-dda12a3abdba",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Vulnerabilities by Microsoft Security Bulletin ID",
+              "description": null,
+              "arguments": {
+                "name": "IBM X-Force Vulnerabilities",
+                "config": "d63eb01a-8f8d-4a3c-91cd-e1ef87236a10",
+                "params": {
+                  "msid": "MS15-065"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-xforce-vulnerabilities",
+                "operation": "search_vulnerabilities_ms_secid",
+                "operationTitle": "Get Vulnerabilities by Microsoft Security Bulletin ID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "83bf03f3-d8e8-4ce4-afbc-8ff024a0b2c3",
+              "id": 7403
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "d1677d6a-a5ab-4c85-ac49-f18969a836a7",
+                "title": "IBM X-Force Vulnerabilities: Get Vulnerabilities by Microsoft Security Bulletin ID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "ca84b06e-a7bc-4c72-8faa-dda12a3abdba",
+              "id": 7402
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Vulnerabilities by Microsoft Security Bulletin ID",
+              "targetStep": "/api/3/workflow_steps/83bf03f3-d8e8-4ce4-afbc-8ff024a0b2c3",
+              "sourceStep": "/api/3/workflow_steps/ca84b06e-a7bc-4c72-8faa-dda12a3abdba",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "222d7cbd-5448-41e3-9634-0648e48eff58"
+            }
+          ],
+          "priority": null,
+          "uuid": "6d4f88cc-6753-4aca-8928-4850fab7b50e",
+          "recordTags": [
+            "IBM X-Force",
+            "Vulnerabilities"
+          ],
+          "id": 1555,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1639495735,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1639497050,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Updated Vulnerabilities",
+          "aliasName": null,
+          "tag": "#IBM X-Force Vulnerabilities",
+          "description": "Returns a list of vulnerabilities that were updated",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1639495922,
+          "collection": "/api/3/workflow_collections/9c70aa5d-fd27-4bac-a441-e86bc89ff1aa",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/e1733af2-c310-4ab5-bb72-1757466822a0",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Updated Vulnerabilities",
+              "description": null,
+              "arguments": {
+                "name": "IBM X-Force Vulnerabilities",
+                "config": "d63eb01a-8f8d-4a3c-91cd-e1ef87236a10",
+                "params": {
+                  "skip": "",
+                  "limit": "",
+                  "endDate": "",
+                  "startDate": "",
+                  "descending": true
+                },
+                "version": "1.0.0",
+                "connector": "ibm-xforce-vulnerabilities",
+                "operation": "get_updated_vulnerabilities",
+                "operationTitle": "Get Updated Vulnerabilities",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "d91cf91f-cafb-42be-aa25-47726162e992",
+              "id": 7395
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "39e52000-c6d3-4a24-9e8b-b9210d713486",
+                "title": "IBM X-Force Vulnerabilities: Get Updated Vulnerabilities",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "e1733af2-c310-4ab5-bb72-1757466822a0",
+              "id": 7394
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Updated Vulnerabilities",
+              "targetStep": "/api/3/workflow_steps/d91cf91f-cafb-42be-aa25-47726162e992",
+              "sourceStep": "/api/3/workflow_steps/e1733af2-c310-4ab5-bb72-1757466822a0",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "9d412832-f300-4505-a754-d6c846540044"
+            }
+          ],
+          "priority": null,
+          "uuid": "81ef2733-dd49-4f9d-976b-1db7f5feeee6",
+          "recordTags": [
+            "IBM X-Force",
+            "Vulnerabilities"
+          ],
+          "id": 1551,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1639495735,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1639497050,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Search Vulnerabilities",
+          "aliasName": null,
+          "tag": "#IBM X-Force Vulnerabilities",
+          "description": "Returns list of all vulnerabilities associated with the search term.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1639496872,
+          "collection": "/api/3/workflow_collections/9c70aa5d-fd27-4bac-a441-e86bc89ff1aa",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/55314ed6-e8de-4f8b-bc2c-f56a1d048532",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Search Vulnerabilities",
+              "description": null,
+              "arguments": {
+                "name": "IBM X-Force Vulnerabilities",
+                "config": "d63eb01a-8f8d-4a3c-91cd-e1ef87236a10",
+                "params": {
+                  "q": "ESET Cyber Security denial of service",
+                  "endDate": "",
+                  "bookmark": "",
+                  "startDate": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-xforce-vulnerabilities",
+                "operation": "search_vulnerabilities",
+                "operationTitle": "Search Vulnerabilities",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "51038fb1-dd2e-49d5-98e8-d8140b5abe44",
+              "id": 7397
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "7ad24fcc-360b-4448-9836-cb80ab8e3e0f",
+                "title": "IBM X-Force Vulnerabilities: Search Vulnerabilities",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "55314ed6-e8de-4f8b-bc2c-f56a1d048532",
+              "id": 7396
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Search Vulnerabilities",
+              "targetStep": "/api/3/workflow_steps/51038fb1-dd2e-49d5-98e8-d8140b5abe44",
+              "sourceStep": "/api/3/workflow_steps/55314ed6-e8de-4f8b-bc2c-f56a1d048532",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "d1688765-eb5f-47f0-beb6-976d918c2811"
+            }
+          ],
+          "priority": null,
+          "uuid": "9a3fc2b5-6749-4ca7-a1ea-ff0c30d5eea6",
+          "recordTags": [
+            "IBM X-Force",
+            "Vulnerabilities"
+          ],
+          "id": 1552,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1639495735,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1639497050,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Vulnerabilities by STDCODE",
+          "aliasName": null,
+          "tag": "#IBM X-Force Vulnerabilities",
+          "description": "Returns the vulnerability associated with the entered stdcode",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1639496074,
+          "collection": "/api/3/workflow_collections/9c70aa5d-fd27-4bac-a441-e86bc89ff1aa",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f06c0c09-f47b-4a46-ac9b-90679091a0be",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Vulnerabilities by STDCODE",
+              "description": null,
+              "arguments": {
+                "name": "IBM X-Force Vulnerabilities",
+                "config": "d63eb01a-8f8d-4a3c-91cd-e1ef87236a10",
+                "params": {
+                  "stdcode": "CVE-2015-1737"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-xforce-vulnerabilities",
+                "operation": "search_vulnerabilities_stdcode",
+                "operationTitle": "Get Vulnerabilities by STDCODE",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "639635df-f30b-4685-9a9d-347b5426ae95",
+              "id": 7401
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "1977c1e4-5768-4fe4-9241-f789cacf3c35",
+                "title": "IBM X-Force Vulnerabilities: Get Vulnerabilities by STDCODE",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "f06c0c09-f47b-4a46-ac9b-90679091a0be",
+              "id": 7400
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Vulnerabilities by STDCODE",
+              "targetStep": "/api/3/workflow_steps/639635df-f30b-4685-9a9d-347b5426ae95",
+              "sourceStep": "/api/3/workflow_steps/f06c0c09-f47b-4a46-ac9b-90679091a0be",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "e1ea0036-4a6e-4f2e-a21e-32739841fcd5"
+            }
+          ],
+          "priority": null,
+          "uuid": "bb67d6ef-068b-4e9e-a159-583adeb7bd10",
+          "recordTags": [
+            "IBM X-Force",
+            "Vulnerabilities"
+          ],
+          "id": 1554,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1639495735,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1639497050,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Vulnerabilities by XFID",
+          "aliasName": null,
+          "tag": "#IBM X-Force Vulnerabilities",
+          "description": "Returns the vulnerability associated with the entered xfdbid.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1639496215,
+          "collection": "/api/3/workflow_collections/9c70aa5d-fd27-4bac-a441-e86bc89ff1aa",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/368fb3b5-6d09-4bc2-937a-4b1367dd39be",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "a710202e-94cb-40a7-be16-eef43c0eb503",
+                "title": "IBM X-Force Vulnerabilities: Get Vulnerabilities by XFID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "368fb3b5-6d09-4bc2-937a-4b1367dd39be",
+              "id": 7398
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Vulnerabilities by XFID",
+              "description": null,
+              "arguments": {
+                "name": "IBM X-Force Vulnerabilities",
+                "config": "d63eb01a-8f8d-4a3c-91cd-e1ef87236a10",
+                "params": {
+                  "xfid": "103360"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-xforce-vulnerabilities",
+                "operation": "search_vulnerabilities_xfid",
+                "operationTitle": "Get Vulnerabilities by XFID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "8b7d77f6-1ebf-4000-8fae-607a6798cf3b",
+              "id": 7399
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Vulnerabilities by XFID",
+              "targetStep": "/api/3/workflow_steps/8b7d77f6-1ebf-4000-8fae-607a6798cf3b",
+              "sourceStep": "/api/3/workflow_steps/368fb3b5-6d09-4bc2-937a-4b1367dd39be",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "9eee16eb-b8ad-494c-ba02-a82ff5c8dc90"
+            }
+          ],
+          "priority": null,
+          "uuid": "f25632b0-d8d4-4581-af35-c5639d53eb47",
+          "recordTags": [
+            "IBM X-Force",
+            "Vulnerabilities"
+          ],
+          "id": 1553,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1639495735,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1639497050,
+          "owners": [],
+          "isPrivate": false
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "IBM X-Force",
+    "Vulnerabilities"
+  ]
+}

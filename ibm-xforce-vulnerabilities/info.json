@@ -1,0 +1,521 @@
+{
+  "name": "ibm-xforce-vulnerabilities",
+  "label": "IBM X-Force Vulnerabilities",
+  "description": "Provides details on a vulnerability and links to relevant online documents and CVSS scoring with component breakdown.",
+  "publisher": "Community",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "version": "1.0.0",
+  "category": "Threat Intelligence",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "server_url",
+        "value": "https://api.xforce.ibmcloud.com"
+      },
+      {
+        "title": "API Key",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "api_key"
+      },
+      {
+        "title": "API Password",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "api_password"
+      },
+      {
+        "title": "Verify SSL",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_recent_vulnerabilities",
+      "title": "Get Recent Vulnerabilities",
+      "description": "Returns recent vulnerabilities.",
+      "category": "investigation",
+      "annotation": "get_recent_vulnerabilities",
+      "output_schema": [
+        {
+          "type": "",
+          "xfdbid": "",
+          "updateid": "",
+          "updated": "",
+          "variant": "",
+          "title": "",
+          "description": "",
+          "description_fmt": "",
+          "risk_level": "",
+          "CVSS3_Version": "",
+          "CVSS3_PrivilegesRequired": "",
+          "CVSS3_UserInteraction": "",
+          "CVSS3_Scope": "",
+          "access_vector": "",
+          "access_complexity": "",
+          "confidentiality_impact": "",
+          "integrity_impact": "",
+          "availability_impact": "",
+          "temporal_score": "",
+          "remediation_level": "",
+          "remedy": "",
+          "remedy_fmt": "",
+          "reported": "",
+          "tagname": "",
+          "stdcode": [
+            ""
+          ],
+          "platforms_affected": [
+            ""
+          ],
+          "exploitability": "",
+          "consequences": "",
+          "references": [
+            {
+              "link_target": "",
+              "link_name": "",
+              "description": ""
+            }
+          ],
+          "report_confidence": ""
+        }
+      ],
+      "parameters": [
+        {
+          "title": "Start Date",
+          "name": "startDate",
+          "tooltip": "Specify the start of the date range for searching. For example, 2016-01-01T00:00:00Z. Must not be later than endDate. If not specified, the range will not be restricted.",
+          "description": "Specify the start of the date range for searching. For example, 2016-01-01T00:00:00Z. Must not be later than endDate. If not specified, the range will not be restricted.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime"
+        },
+        {
+          "title": "End Date",
+          "name": "endDate",
+          "tooltip": "Specify the end of the date range for searching. If not specified, the query will return the newest IPs.",
+          "description": "Specify the end of the date range for searching. If not specified, the query will return the newest IPs.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime"
+        },
+        {
+          "title": "Descending",
+          "name": "descending",
+          "tooltip": "Specify the order of returned Vulnerabilities according to the updated date, default value is true.",
+          "description": "Specify The order of returned Vulnerabilities according to the updated date, default value is true.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": true
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "tooltip": "Specify the number of vulnerabilities to be returned. ",
+          "description": "Specify the number of vulnerabilities to be returned.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer"
+        },
+        {
+          "title": "Skip",
+          "name": "skip",
+          "tooltip": "Specify the number of Vulnerabilities to be skipped while searching.",
+          "description": "Specify the number of Vulnerabilities to be skipped while searching.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_updated_vulnerabilities",
+      "title": "Get Updated Vulnerabilities",
+      "description": "Returns a list of vulnerabilities that were updated",
+      "category": "investigation",
+      "annotation": "get_updated_vulnerabilities",
+      "output_schema": [
+        {
+          "type": "",
+          "xfdbid": "",
+          "updateid": "",
+          "updated": "",
+          "variant": "",
+          "title": "",
+          "description": "",
+          "description_fmt": "",
+          "risk_level": "",
+          "CVSS3_Version": "",
+          "CVSS3_PrivilegesRequired": "",
+          "CVSS3_UserInteraction": "",
+          "CVSS3_Scope": "",
+          "access_vector": "",
+          "access_complexity": "",
+          "confidentiality_impact": "",
+          "integrity_impact": "",
+          "availability_impact": "",
+          "temporal_score": "",
+          "remediation_level": "",
+          "remedy": "",
+          "remedy_fmt": "",
+          "reported": "",
+          "tagname": "",
+          "stdcode": [
+            ""
+          ],
+          "platforms_affected": [
+            ""
+          ],
+          "exploitability": "",
+          "consequences": "",
+          "references": [
+            {
+              "link_target": "",
+              "link_name": "",
+              "description": ""
+            }
+          ],
+          "report_confidence": ""
+        }
+      ],
+      "parameters": [
+        {
+          "title": "Start Date",
+          "name": "startDate",
+          "tooltip": "Specify the start of the date range for searching. e.g. 2016-01-01T00:00:00Z. Must not be later than endDate. If not specified, the range will not be restricted.",
+          "description": "Specify the start of the date range for searching. e.g. 2016-01-01T00:00:00Z. Must not be later than endDate. If not specified, the range will not be restricted.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime"
+        },
+        {
+          "title": "End Date",
+          "name": "endDate",
+          "tooltip": "Specify the end of the date range for searching. If not specified, the range will not be restricted.",
+          "description": "Specify the end of the date range for searching. If not specified, the range will not be restricted.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime"
+        },
+        {
+          "title": "Descending",
+          "name": "descending",
+          "tooltip": "Specify the order of returned Vulnerabilities according to the updated date, default value is true.",
+          "description": "Specify the order of returned Vulnerabilities according to the updated date, default value is true.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": true
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "tooltip": "Specify the number of vulnerabilities to be returned. default value is 200. The limit must not be larger than 200",
+          "description": "Specify the number of vulnerabilities to be returned. default value is 200. The limit must not be larger than 200",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer"
+        },
+        {
+          "title": "Skip",
+          "name": "skip",
+          "tooltip": "Specify the number of Vulnerabilities to be skipped while searching.",
+          "description": "Specify the number of Vulnerabilities to be skipped while searching.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "search_vulnerabilities",
+      "title": "Search Vulnerabilities",
+      "description": "Returns list of all vulnerabilities associated with the search term.",
+      "category": "investigation",
+      "annotation": "search_vulnerabilities",
+      "output_schema": {
+        "total_rows": "",
+        "bookmark": "",
+        "rows": [
+          {
+            "type": "",
+            "xfdbid": "",
+            "updateid": "",
+            "updated": "",
+            "variant": "",
+            "title": "",
+            "description": "",
+            "description_fmt": "",
+            "risk_level": "",
+            "CVSS3_Version": "",
+            "CVSS3_PrivilegesRequired": "",
+            "CVSS3_UserInteraction": "",
+            "CVSS3_Scope": "",
+            "access_vector": "",
+            "access_complexity": "",
+            "confidentiality_impact": "",
+            "integrity_impact": "",
+            "availability_impact": "",
+            "temporal_score": "",
+            "remediation_level": "",
+            "remedy": "",
+            "remedy_fmt": "",
+            "reported": "",
+            "tagname": "",
+            "stdcode": [
+              ""
+            ],
+            "platforms_affected": [
+              ""
+            ],
+            "exploitability": "",
+            "consequences": "",
+            "references": [
+              {
+                "link_target": "",
+                "link_name": "",
+                "description": ""
+              }
+            ],
+            "report_confidence": ""
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "title": "Search Query",
+          "name": "q",
+          "tooltip": "Search term For example, Heartbleed.",
+          "description": "Search term For example, Heartbleed. ",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        },
+        {
+          "title": "Start Date",
+          "name": "startDate",
+          "tooltip": "Specify the start of the date range for searching. e.g. 2016-01-01T00:00:00Z. Must not be later than endDate. If not specified, the range will not be restricted.",
+          "description": "Specify the start of the date range for searching. e.g. 2016-01-01T00:00:00Z. Must not be later than endDate. If not specified, the range will not be restricted.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime"
+        },
+        {
+          "title": "End Date",
+          "name": "endDate",
+          "tooltip": "Specify the end of the date range for searching. If not specified, the range will not be restricted.",
+          "description": "Specify the end of the date range for searching. If not specified, the range will not be restricted.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime"
+        },
+        {
+          "title": "Bookmark",
+          "name": "bookmark",
+          "tooltip": "Bookmark used to page through results.",
+          "description": "Bookmark used to page through results.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "search_vulnerabilities_xfid",
+      "title": "Get Vulnerabilities by XFID",
+      "description": "Returns the vulnerability associated with the entered xfdbid.",
+      "category": "investigation",
+      "annotation": "search_vulnerabilities_xfid",
+      "output_schema": {
+        "type": "",
+        "xfdbid": "",
+        "updateid": "",
+        "updated": "",
+        "variant": "",
+        "title": "",
+        "description": "",
+        "description_fmt": "",
+        "risk_level": "",
+        "CVSS3_Version": "",
+        "CVSS3_PrivilegesRequired": "",
+        "CVSS3_UserInteraction": "",
+        "CVSS3_Scope": "",
+        "access_vector": "",
+        "access_complexity": "",
+        "confidentiality_impact": "",
+        "integrity_impact": "",
+        "availability_impact": "",
+        "temporal_score": "",
+        "remediation_level": "",
+        "remedy": "",
+        "remedy_fmt": "",
+        "reported": "",
+        "tagname": "",
+        "stdcode": [
+          ""
+        ],
+        "platforms_affected": [
+          ""
+        ],
+        "exploitability": "",
+        "consequences": "",
+        "references": [
+          {
+            "link_target": "",
+            "link_name": "",
+            "description": ""
+          }
+        ],
+        "report_confidence": ""
+      },
+      "parameters": [
+        {
+          "title": "XFDB ID",
+          "name": "xfid",
+          "tooltip": "Search term For example, 92744.",
+          "description": "Search term For example, 92744.",
+          "placeholder": "92744",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "search_vulnerabilities_stdcode",
+      "title": "Get Vulnerabilities by STDCODE",
+      "description": "Returns the vulnerability associated with the entered stdcode",
+      "category": "investigation",
+      "annotation": "search_vulnerabilities_stdcode",
+      "output_schema": [
+        {
+          "type": "",
+          "xfdbid": "",
+          "updateid": "",
+          "updated": "",
+          "variant": "",
+          "title": "",
+          "description": "",
+          "description_fmt": "",
+          "risk_level": "",
+          "CVSS3_Version": "",
+          "CVSS3_PrivilegesRequired": "",
+          "CVSS3_UserInteraction": "",
+          "CVSS3_Scope": "",
+          "access_vector": "",
+          "access_complexity": "",
+          "confidentiality_impact": "",
+          "integrity_impact": "",
+          "availability_impact": "",
+          "temporal_score": "",
+          "remediation_level": "",
+          "remedy": "",
+          "remedy_fmt": "",
+          "reported": "",
+          "tagname": "",
+          "stdcode": [
+            ""
+          ],
+          "platforms_affected": [
+            ""
+          ],
+          "exploitability": "",
+          "consequences": "",
+          "references": [
+            {
+              "link_target": "",
+              "link_name": "",
+              "description": ""
+            }
+          ],
+          "report_confidence": ""
+        }
+      ],
+      "parameters": [
+        {
+          "title": "STD Code",
+          "name": "stdcode",
+          "tooltip": "Search term, For example, CVE-2014-2601, BID-69453, US-CERT VU#546340, RHSA20131456.",
+          "description": "Search term, For example, CVE-2014-2601, BID-69453, US-CERT VU#546340, RHSA20131456.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "search_vulnerabilities_ms_secid",
+      "title": "Get Vulnerabilities by Microsoft Security Bulletin ID",
+      "description": "Returns the vulnerability associated with the entered stdcode",
+      "category": "investigation",
+      "annotation": "search_vulnerabilities_ms_secid",
+      "output_schema": [
+        {
+          "risk_level": "",
+          "title": "",
+          "xfdbid": "",
+          "stdcode": [
+            ""
+          ],
+          "reference": "",
+          "reported": ""
+        }
+      ],
+      "parameters": [
+        {
+          "title": "MSID",
+          "name": "msid",
+          "tooltip": "Specify the Microsoft Security Bulletin ID.",
+          "description": "Specify the Microsoft Security Bulletin ID .",
+          "placeholder": "MS15-065",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        }
+      ],
+      "enabled": true
+    }
+  ]
+}
