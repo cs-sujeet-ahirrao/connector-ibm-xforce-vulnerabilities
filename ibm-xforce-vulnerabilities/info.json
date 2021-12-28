@@ -3,7 +3,7 @@
   "label": "IBM X-Force Vulnerabilities",
   "description": "Provides details on a vulnerability and links to relevant online documents and CVSS scoring with component breakdown.",
   "publisher": "Community",
-  "cs_approved": true,
+  "cs_approved": false,
   "cs_compatible": true,
   "version": "1.0.0",
   "category": "Threat Intelligence",
